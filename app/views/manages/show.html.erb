@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @manage.deadline %>
+</p>
+
+<p>
+  <strong>Review ungraded:</strong>
+  <%= @manage.review_ungraded %>
+</p>
+
+<p>
+  <strong>Update graded:</strong>
+  <%= @manage.update_graded %>
+</p>
+
+<%= link_to 'Edit', edit_manage_path(@manage) %> |
+<%= link_to 'Back', addpaper_path %>

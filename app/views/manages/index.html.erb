@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Manages</h1>
+
+<% manage = @manages.first %>
+<%= link_to 'SET DEADLINE', edit_manage_path(manage, to_set:"set_deadline") %>
+<br>
+<%= link_to 'DISABLE SCORING', edit_manage_path(manage, to_set:"disable_scoring") %>
+<br>
+<%= link_to 'SORT PAPERS', edit_manage_path(manage) %>
+
+<br>
+
+
+<%= link_to 'New Manage', new_manage_path %>

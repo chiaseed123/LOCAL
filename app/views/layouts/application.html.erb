@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ADTS2020</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/css/solid.css"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <%= stylesheet_link_tag "website.css" %>
+  </head>
+
+  <!-- DEBUG Variables
+    <% if current_user %>  
+      USER = <%= current_user.username %>.
+    <% else %>
+      USER = "nil"
+    <% end %>
+  -->
+
+  <!--navigation-->
+  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+      <%= link_to image_tag("logo_wh.jpg"), root_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto"
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, :class => "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", about_path, :class => "nav-link" %>              
+          </li>
+          <li class="nav-item">
+            <%= link_to "Contact Us", contact_path, :class => "nav-link" %>
+          </li>
+
+          <% if current_user %>  
+            <li class="nav-item">
+              <%= link_to "Log Out", logout_path, :class => "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Log In", login_path, :class => "nav-link" %>
+            </li>
+          <% end %>  
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <% if current_user %>
+    <div id="euser" class="container" style="float: left; padding: 1%; width: 20%; overflow: hidden; border: 1px solid #000;">
+      <h2> Welcome <%= current_user.username %> </h2>
+      <div class="btn-group-vertical">
+        <%= link_to "View Papers", root_path ,:class => "btn btn-primary" %>
+        <%= link_to "Add Papers", addpaper_path(manage_paper:"add"), :class => "btn btn-primary" %>
+        <%= link_to "Remove Papers", removepaper_path(manage_paper:"remove"), :class => "btn btn-primary" %>
+        <%= link_to "Manage Papers", managepapers_path, :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<body>
+
+<%= yield %>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<%= form_with(model: score, local: true) do |form| %>
+  <% if score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
+
+      <ul>
+        <% score.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paper_id %>
+    <%= form.number_field :paper_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feasibility %>
+    <%= form.number_field :feasibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :novelty %>
+    <%= form.number_field :novelty %>
+  </div>
+
+  <div class="field">
+    <%= form.label :significance %>
+    <%= form.number_field :significance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quality %>
+    <%= form.number_field :quality %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

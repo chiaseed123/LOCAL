@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Scores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Paper</th>
+      <th>Feasibility</th>
+      <th>Novelty</th>
+      <th>Significance</th>
+      <th>Quality</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.user_id %></td>
+        <td><%= score.paper_id %></td>
+        <td><%= score.feasibility %></td>
+        <td><%= score.novelty %></td>
+        <td><%= score.significance %></td>
+        <td><%= score.quality %></td>
+        <td><%= score.comment %></td>
+        <td><%= link_to 'Show', score %></td>
+        <td><%= link_to 'Edit', edit_score_path(score) %></td>
+        <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Score', new_score_path %>

@@ -1,0 +1,45 @@
+<% if @to_set == "set_deadline" %>
+  <h1>SET DEADLINE</h1>
+<% elsif %>
+  <h1>DISABLE SCORING</h1>
+<% end %>
+
+<%= form_with(model: @manage, local: true) do |form| %>
+  <% if @manage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage.errors.count, "error") %> prohibited this manage from being saved:</h2>
+
+      <ul>
+        <% @manage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% if @to_set == "set_deadline" %>
+    <div class="field">
+      <%= form.datetime_select :deadline %>
+    </div>
+  <% end %>
+  
+  <% if @to_set == "disable_scoring" %>
+    <div class="field">
+      <%= form.check_box :review_ungraded %> REVIEW OF UNGRADED PAPERS
+    </div>
+  <% end %>
+  
+  <% if @to_set == "disable_scoring" %>
+    <div class="field">
+      <%= form.check_box :update_graded %> SCORE UPDATE OF GRADED PAPERS
+    </div>
+  <% end %>
+  
+  <% if @to_set %>
+    <div class="actions">
+      <%= form.submit "CONFIRM"%>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', manages_path %>

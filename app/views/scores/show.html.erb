@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @score.user_id %>
+</p>
+
+<p>
+  <strong>Paper:</strong>
+  <%= @score.paper_id %>
+</p>
+
+<p>
+  <strong>Feasibility:</strong>
+  <%= @score.feasibility %>
+</p>
+
+<p>
+  <strong>Novelty:</strong>
+  <%= @score.novelty %>
+</p>
+
+<p>
+  <strong>Significance:</strong>
+  <%= @score.significance %>
+</p>
+
+<p>
+  <strong>Quality:</strong>
+  <%= @score.quality %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @score.comment %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

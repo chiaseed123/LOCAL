@@ -1,0 +1,39 @@
+<!--
+  <%= notice %>
+-->
+
+<!--- Unique Contents here -->
+<div id="viewlist" class="container" style="float: left; padding: 1%; width: 80%; overflow: hidden; border: 1px solid #000;">
+  <h2>Papers</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Link</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @papers.each do |paper| %>
+      <tr>
+        <td><%= paper.title %></td>
+        <td><%= paper.author %></td>
+        <td><%= paper.link %></td>
+        <% if @manage_paper == "add" %>
+          <td><%= link_to 'Show', paper %></td>
+          <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
+        <% elsif @manage_paper == "remove" %>
+          <td><%= link_to 'Destroy', paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  <br>
+  <% if @manage_paper == "add" %>
+    <%= link_to 'New Paper', new_paper_path, :class => "nav-link"%>
+  <% end %>
+</div>
